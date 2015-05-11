@@ -1,0 +1,65 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabbed Browsing</title>
+    <link rel="stylesheet" href="stylesheets/app.css" />
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <script src="bower_components/modernizr/modernizr.js"></script>
+  </head>
+  <body>
+    <div class="row">
+      <div class="large-12 columns">
+        <h1>Tabbed Video Browsing in Foundation</h1>
+        <p>A jQuery solution for pausing YouTube clips when clicking through Zurb Foundation tabs.</p> 
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="large-12 columns">
+        <ul class="tabs" data-tab>
+          <li class="tab-title active"><a href="#panel1">Tab 1</a></li>
+          <li class="tab-title"><a href="#panel2">Tab 2</a></li>
+          <li class="tab-title"><a href="#panel3">Tab 3</a></li>
+          <li class="tab-title"><a href="#panel4">Tab 4</a></li>
+        </ul>
+        <div class="tabs-content">
+          <div class="content active" id="panel1">
+            <div class="flex-video">
+              <iframe id="youtube_player_1" width="560" height="315" src="https://www.youtube.com/embed/r4d1IuG-hzo?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="content" id="panel2">
+            <div class="flex-video">
+              <iframe id="youtube_player_2" width="560" height="315" src="https://www.youtube.com/embed/KSFgolB7HHE?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="content" id="panel3">
+            <div class="flex-video">
+              <iframe id="youtube_player_3" width="420" height="315" src="https://www.youtube.com/embed/bxSFSdcGPLM?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+            <div class="content" id="panel4">
+              <div class="flex-video">
+                <iframe id="youtube_player_4" width="420" height="315" src="https://www.youtube.com/embed/OqINetENovg?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/foundation/js/foundation.min.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+          $('.tab-title a').on('click', function() {
+          $('#youtube_player_1')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*'); 
+          $('#youtube_player_2')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*'); 
+          $('#youtube_player_3')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');   
+          $('#youtube_player_4')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');     
+          });
+      </script>
+  </body>
+</html>
